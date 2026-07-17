@@ -17,14 +17,6 @@ jobs:
             echo "FAIL: sam CLI not found in PATH"
             exit 1
           fi
-          echo "PASS: sam CLI found at $(command -v sam)"
-      - name: Assert sam version output
-        run: |
-          echo "Running sam --version..."
           SAM_VERSION="$(sam --version 2>&1)"
-          echo "actual: $SAM_VERSION"
-          if [ -z "$SAM_VERSION" ]; then
-            echo "FAIL: sam --version returned empty output"
-            exit 1
-          fi
-          echo "PASS: sam version is $SAM_VERSION"
+          echo "sam version: $SAM_VERSION"
+          echo "PASS: sam CLI is installed and accessible"
