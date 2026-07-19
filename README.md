@@ -9,6 +9,7 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 | Version | Tag | Upstream commit |
 |---------|-----|-----------------|
 | v2 | [`v2`](https://github.com/chainguard-actions/aws-actions-setup-sam/tree/v2) | [`f84ec7d`](https://github.com/aws-actions/setup-sam/commit/f84ec7d548307efafe33230528756de3c5841a17) |
+| v3 | [`v3`](https://github.com/chainguard-actions/aws-actions-setup-sam/tree/v3) | [`89ddb14`](https://github.com/aws-actions/setup-sam/commit/89ddb14d60e682855e3fea4be85b3c56485de310) |
 
 ## Privacy
 
