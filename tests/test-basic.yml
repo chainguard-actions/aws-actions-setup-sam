@@ -1,0 +1,28 @@
+name: Test basic SAM CLI setup (default)
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: action
+        uses: .
+      - name: Assert sam is on PATH
+        run: |
+          echo "Checking sam CLI is available..."
+          if ! command -v sam &>/dev/null; then
+            echo "FAIL: sam command not found on PATH"
+            exit 1
+          fi
+          echo "PASS: sam found at $(command -v sam)"
+      - name: Assert sam version output
+        run: |
+          echo "Running sam --version..."
+          VERSION_OUTPUT=$(sam --version 2>&1)
+          echo "Output: $VERSION_OUTPUT"
+          if ! echo "$VERSION_OUTPUT" | grep -qi "SAM CLI"; then
+            echo "FAIL: unexpected version output: $VERSION_OUTPUT"
+            exit 1
+          fi
+          echo "PASS: sam --version returned expected output"

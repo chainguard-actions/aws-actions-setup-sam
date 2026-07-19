@@ -1,0 +1,20 @@
+name: Test python interpreter input
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: action
+        uses: .
+        with:
+          python: python3
+      - name: Assert sam is available
+        run: |
+          echo "Checking sam CLI is installed..."
+          if ! command -v sam &>/dev/null; then
+            echo "FAIL: sam CLI not found in PATH"
+            exit 1
+          fi
+          echo "PASS: sam CLI found at $(command -v sam)"
